@@ -31,7 +31,6 @@ const Sedb = require('../index.js');
 
 	console.log('\n\nPUT - ', result);
 
-
 	result = await Db.get(table, {
 		gid: 'z',
 		uid: 'b',
