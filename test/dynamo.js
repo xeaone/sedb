@@ -9,7 +9,10 @@ const Sedb = require('../index.js');
 		version: '2012-08-10'
     });
 
-	await Db.setup([table], [true]);
+	await Db.setup([{
+		name: table,
+		index: true
+	}]);
 
 	result = await Db.put(table, {
 		gid: 'z',
