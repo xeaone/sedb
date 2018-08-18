@@ -9,7 +9,7 @@ const Sedb = require('../index.js');
 		version: '2012-08-10'
     });
 
-	await Db.setup([table]);
+	await Db.setup([table], [true]);
 
 	result = await Db.put(table, {
 		gid: 'z',
@@ -53,6 +53,12 @@ const Sedb = require('../index.js');
 	});
 
 	console.log('\n\nQUERY - ', result);
+
+	result = await Db.query(table, {
+		uid: 'b'
+	});
+
+	console.log('\n\nQUERY INDEX - ', result);
 
 	result = await Db.remove(table, {
 		gid: 'z',
