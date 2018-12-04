@@ -1,6 +1,6 @@
 {
 	"name": "sedb",
-	"version": "0.0.9",
+	"version": "0.1.0",
 	"description": "Sedb",
 	"main": "index.js",
 	"scripts": {
@@ -22,6 +22,6 @@
 	},
 	"homepage": "https://github.com/AlexanderElias/sedb#readme",
 	"dependencies": {
-		"aws-sdk": "^2.294.0"
+		"aws-sdk": "^2.368.0"
 	}
 }

@@ -11,65 +11,66 @@ const Sedb = require('../index.js');
 
 	await Db.setup([{
 		name: table,
-		index: true
+		schema: [
+			{
+				hash: 'uid',
+			},
+			{
+				gsi: true,
+				hash: 'tid'
+			},
+			{
+				gsi: true,
+				hash: 'gid'
+			}
+		]
 	}]);
 
 	result = await Db.put(table, {
 		gid: 'z',
 		uid: 'a',
+		tid: 'users',
 		number: 1,
 		boolean: true,
 		string: 'hello world'
 	});
-
-	console.log('\n\nPUT - ', result);
+	console.log('\nPUT - ', result);
 
 	result = await Db.put(table, {
 		gid: 'z',
 		uid: 'b',
+		tid: 'users',
 		number: 2,
 		boolean: true,
 		string: 'hello world'
 	});
-
-	console.log('\n\nPUT - ', result);
+	console.log('\nPUT - ', result);
 
 	result = await Db.get(table, {
-		gid: 'z',
-		uid: 'b',
+		uid: 'b'
 	});
-
-	console.log('\n\nGET - ', result);
+	console.log('\nGET: uid - ', result);
 
 	result = await Db.update(table, {
-		gid: 'z',
 		uid: 'b',
-		number: 1,
 		boolean: false
 	});
-
-	console.log('\n\nUPDATE - ', result);
+	console.log('\nUPDATE: uid, boolean - ', result);
 
 	result = await Db.query(table, {
 		gid: 'z',
 		number: 1
 	});
-
-	console.log('\n\nQUERY - ', result);
+	console.log('\nQUERY GSI: gid, number - ', result);
 
 	result = await Db.query(table, {
-		uid: 'b'
+		tid: 'users'
 	});
-
-	console.log('\n\nQUERY INDEX - ', result);
+	console.log('\nQUERY GSI: tid - ', result);
 
 	result = await Db.remove(table, {
-		gid: 'z',
-		uid: 'b'
+		uid: 'a'
 	});
+	console.log('\nREMOVE: uid - ', result);
 
-	console.log('\n\nREMOVE - ', result);
-
-}()).catch(function (error) {
-	console.error(error);
-});
+}()).catch(console.error);
