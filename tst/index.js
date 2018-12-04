@@ -16,11 +16,11 @@ const Sedb = require('../index.js');
 				hash: 'uid',
 			},
 			{
-				gsi: true,
+				gsi: 'tid',
 				hash: 'tid'
 			},
 			{
-				gsi: true,
+				gsi: 'gid',
 				hash: 'gid'
 			}
 		]
