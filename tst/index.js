@@ -1,24 +1,17 @@
-
-const Sedb = require('../index.js');
+const Db = require('./db.js');
 
 (async function() {
-	const table = 'sedb';
-
-	const Db = new Sedb.dynamo({
-        region: 'us-west-2',
-		version: '2012-08-10'
-    });
 
 	await Db.setup([{
-		name: table,
+		name: 'sedb',
 		schema: [
 			{
 				hash: 'uid',
 			},
-			{
-				gsi: 'tid',
-				hash: 'tid'
-			},
+			// {
+			// 	gsi: 'tid',
+			// 	hash: 'tid'
+			// },
 			{
 				gsi: 'gid',
 				hash: 'gid'
@@ -26,25 +19,33 @@ const Sedb = require('../index.js');
 		]
 	}]);
 
-	result = await Db.put(table, {
-		gid: 'z',
+	result = await Db.add(table, {
 		uid: 'a',
+		gid: 'z',
 		tid: 'users',
 		number: 1,
 		boolean: true,
 		string: 'hello world'
 	});
-	console.log('\nPUT - ', result);
+	console.log('\nADD');
 
-	result = await Db.put(table, {
-		gid: 'z',
-		uid: 'b',
-		tid: 'users',
-		number: 2,
-		boolean: true,
-		string: 'hello world'
-	});
-	console.log('\nPUT - ', result);
+	// result = await Db.add(table, {
+	// 	uid: 'b',
+	// 	gid: 'z',
+	// 	tid: 'users',
+	// 	number: 2,
+	// 	boolean: true,
+	// 	string: 'hello world'
+	// });
+	// console.log('\nADD');
+	//
+	// result = await Db.add(table, {
+	// 	uid: 'c',
+	// 	gid: 'z',
+	// 	tid: 'users',
+	// 	number: 3
+	// });
+	// console.log('\nADD');
 
 	result = await Db.get(table, {
 		uid: 'b'
@@ -53,20 +54,21 @@ const Sedb = require('../index.js');
 
 	result = await Db.update(table, {
 		uid: 'b',
-		boolean: false
+		boolean: !result.boolean
 	});
-	console.log('\nUPDATE: uid, boolean - ', result);
+	console.log('\nUPDATE: uid, boolean');
+
+	result = await Db.query(table, {
+		gid: 'z'
+	});
+	console.log('\nQUERY GSI: gid - ', result);
 
 	result = await Db.query(table, {
 		gid: 'z',
-		number: 1
+		tid: 'users',
+		number: 3
 	});
-	console.log('\nQUERY GSI: gid, number - ', result);
-
-	result = await Db.query(table, {
-		tid: 'users'
-	});
-	console.log('\nQUERY GSI: tid - ', result);
+	console.log('\nQUERY GSI: gid, tid, number - ', result);
 
 	result = await Db.remove(table, {
 		uid: 'a'
