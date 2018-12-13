@@ -1,23 +1,9 @@
 const Db = require('./db.js');
+const Global = require('./global.js');
 
 (async function() {
 
-	await Db.setup([{
-		name: 'sedb',
-		schema: [
-			{
-				hash: 'uid',
-			},
-			// {
-			// 	gsi: 'tid',
-			// 	hash: 'tid'
-			// },
-			{
-				gsi: 'gid',
-				hash: 'gid'
-			}
-		]
-	}]);
+	await Db.setup(Global);
 
 	result = await Db.add(table, {
 		uid: 'a',
@@ -27,6 +13,7 @@ const Db = require('./db.js');
 		boolean: true,
 		string: 'hello world'
 	});
+	
 	console.log('\nADD');
 
 	// result = await Db.add(table, {
