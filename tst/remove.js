@@ -4,13 +4,12 @@ const Global = require('./global.js');
 (async function() {
 
 	const item = {
-		uid: 'z',
-		text: 'hello wolrd'
+		uid: 'a'
 	};
 
 	await Db.setup(Global);
-	await Db.update('sedb', item);
+	await Db.remove('sedb', item);
 
-	console.log('UPDATE: not exist should throw');
+	console.log('REMOVE: should remove item with uid=a');
 
 }()).catch(console.error);
