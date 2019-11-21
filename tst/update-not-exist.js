@@ -1,7 +1,7 @@
 const Db = require('./db.js');
 const Global = require('./global.js');
 
-(async function() {
+(async function () {
 
 	const item = {
 		uid: 'z',
@@ -9,7 +9,7 @@ const Global = require('./global.js');
 	};
 
 	await Db.setup(Global);
-	await Db.update('sedb', item);
+	await Db.update(item);
 
 	console.log('UPDATE: not exist should throw');
 

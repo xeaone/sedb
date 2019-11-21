@@ -1,7 +1,7 @@
 const Db = require('./db.js');
 const Global = require('./global.js');
 
-(async function() {
+(async function () {
 
 	const item = {
 		uid: 'a'
@@ -14,7 +14,7 @@ const Global = require('./global.js');
 	};
 
 	await Db.setup(Global);
-	await Db.remove('sedb', item, option);
+	await Db.remove(item, option);
 
 	console.log('REMOVE: should throw error');
 
