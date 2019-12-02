@@ -1,6 +1,6 @@
 {
 	"name": "sedb",
-	"version": "0.8.5",
+	"version": "0.9.0",
 	"description": "Sedb",
 	"main": "index.js",
 	"scripts": {
