@@ -1,21 +1,20 @@
 const Db = require('./db.js');
-const Global = require('./global.js');
 
 (async function () {
 
-	const item = {
-		uid: 'a'
-	};
+    const item = {
+        uid: 'a'
+    };
 
-	const option = {
-		condition: {
-			tid: 'users'
-		}
-	};
+    const option = {
+        condition: {
+            tid: 'users'
+        }
+    };
 
-	await Db.setup(Global);
-	await Db.remove(item, option);
+    await Db.setup();
+    await Db.remove(item, option);
 
-	console.log('REMOVE: should remove item');
+    console.log('REMOVE: should remove item');
 
 }()).catch(console.error);
