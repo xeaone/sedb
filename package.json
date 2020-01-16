@@ -1,6 +1,6 @@
 {
 	"name": "sedb",
-	"version": "0.10.1",
+	"version": "0.11.0",
 	"description": "Sedb",
 	"main": "index.js",
 	"scripts": {
@@ -22,6 +22,6 @@
 	},
 	"homepage": "https://github.com/vokeio/sedb#readme",
 	"dependencies": {
-		"aws-sdk": "^2.368.0"
+		"aws-sdk": "^2.604.0"
 	}
 }
