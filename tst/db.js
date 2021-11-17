@@ -4,6 +4,7 @@ const Db = new Sedb.dynamo({
     name: 'sedb',
     profile: 'arc',
     region: 'us-west-2',
+    // region: 'us-east-1',
     version: '2012-08-10',
     primary: { hash: 'uid' },
     indexes: [ { hash: 'gid' } ]

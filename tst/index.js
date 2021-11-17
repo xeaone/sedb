@@ -15,6 +15,7 @@ const Db = require('./db.js');
     });
     console.log('\nADD');
 
+
     // result = await Db.add({
     //     uid: 'b',
     //     gid: 'z',
@@ -33,32 +34,33 @@ const Db = require('./db.js');
     // });
     // console.log('\nADD');
 
-    result = await Db.get({
-        uid: 'b'
-    });
-    console.log('\nGET: uid - ', result);
 
-    result = await Db.update({
-        uid: 'b',
-        boolean: !result.boolean
-    });
-    console.log('\nUPDATE: uid, boolean');
+    // result = await Db.get({
+    //     uid: 'b'
+    // });
+    // console.log('\nGET: uid - ', result);
 
-    result = await Db.query({
-        gid: 'z'
-    });
-    console.log('\nQUERY GSI: gid - ', result);
+    // result = await Db.update({
+    //     uid: 'b',
+    //     boolean: !result.boolean
+    // });
+    // console.log('\nUPDATE: uid, boolean');
 
-    result = await Db.query({
-        gid: 'z',
-        tid: 'users',
-        number: 3
-    });
-    console.log('\nQUERY GSI: gid, tid, number - ', result);
+    // result = await Db.query({
+    //     gid: 'z'
+    // });
+    // console.log('\nQUERY GSI: gid - ', result);
 
-    result = await Db.remove({
-        uid: 'a'
-    });
-    console.log('\nREMOVE: uid - ', result);
+    // result = await Db.query({
+    //     gid: 'z',
+    //     tid: 'users',
+    //     number: 3
+    // });
+    // console.log('\nQUERY GSI: gid, tid, number - ', result);
+
+    // result = await Db.remove({
+    //     uid: 'a'
+    // });
+    // console.log('\nREMOVE: uid - ', result);
 
 }()).catch(console.error);
