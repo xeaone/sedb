@@ -3,9 +3,7 @@
     "version": "1.0.0",
     "description": "Sedb",
     "main": "index.js",
-    "scripts": {
-        "test": ""
-    },
+    "scripts": {},
     "repository": {
         "type": "git",
         "url": "git+https://github.com/vokeio/sedb.git"
