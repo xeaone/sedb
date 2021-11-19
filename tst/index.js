@@ -5,15 +5,15 @@ const Db = require('./db.js');
 
     await Db.setup();
 
-    // result = await Db.add({
-    //     uid: 'a',
-    //     gid: 'z',
-    //     tid: 'users',
-    //     number: 1,
-    //     boolean: true,
-    //     string: 'hello world',
-    // });
-    // console.log('\nADD');
+    result = await Db.add({
+        uid: 'a',
+        gid: 'z',
+        tid: 'users',
+        number: 1,
+        boolean: true,
+        string: 'hello world',
+    });
+    console.log('\nADD');
 
 
     // result = await Db.add({
@@ -52,7 +52,6 @@ const Db = require('./db.js');
         gid: 'z'
     });
     console.log('\nQUERY GSI: gid - ', result);
-    console.log(JSON.stringify(result, null, '\t'));
 
     result = await Db.query({
         gid: 'z',
@@ -61,9 +60,9 @@ const Db = require('./db.js');
     });
     console.log('\nQUERY GSI: gid, tid, number - ', result);
 
-    // result = await Db.remove({
-    //     uid: 'a'
-    // });
-    // console.log('\nREMOVE: uid - ', result);
+    result = await Db.remove({
+        uid: 'a'
+    });
+    console.log('\nREMOVE: uid - ', result);
 
 }()).catch(console.error);
